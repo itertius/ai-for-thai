@@ -33,10 +33,19 @@ else:
 use_sample = st.checkbox("Use sample video instead of uploading")
 
 if use_sample:
-    sample_path = "sample/squat_sample.mp4"
+    sample_options = {
+        "Squat Sample": "sample/squat_sample.mp4",
+        "Deadlift Sample": "sample/deadlift_sample.mp4",
+        "Benchpress Sample": "sample/benchpress_sample.mp4"
+    }
+
+    selected_sample = st.selectbox("Select a sample video", list(sample_options.keys()))
+    sample_path = sample_options[selected_sample]
+
     if not os.path.exists(sample_path):
-        st.error("Sample video not found! Please put a video at `sample/squat_sample.mp4`")
+        st.error(f"Sample video not found! Please put a video at `{sample_path}`")
         st.stop()
+
     video_path = sample_path
 else:
     video_file = st.file_uploader("Upload a video", type=["mp4", "mov", "avi"])
@@ -47,6 +56,7 @@ else:
     else:
         st.warning("Please upload a video or check 'Use sample video'")
         st.stop()
+
 
 # --- Pose Extraction Function ---
 def extract_pose_landmarks(results):
