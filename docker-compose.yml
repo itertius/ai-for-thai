@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  powerlifting-app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/app/models
+      - ./sample:/app/sample
+    environment:
+      - PYTHONUNBUFFERED=1
