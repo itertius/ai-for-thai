@@ -1,7 +1,9 @@
-streamlit
+fastapi
+uvicorn
+opencv-python-headless
 mediapipe
 numpy
-pandas
-opencv-python-headless
-requests
+pillow
 scikit-learn
+python-multipart
+requests

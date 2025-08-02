@@ -1,27 +1,23 @@
-# Use official Python slim image
-FROM python:3.10-slim
+FROM python:3.9-slim
 
-# Install system dependencies for mediapipe and opencv
+# ติดตั้ง dependency ที่จำเป็น
 RUN apt-get update && apt-get install -y \
-    ffmpeg \
+    libglib2.0-0 \
     libsm6 \
+    libxrender1 \
     libxext6 \
-    libgl1-mesa-glx \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
+# ตั้ง working dir
 WORKDIR /app
 
-# Copy requirements file and install Python dependencies
+# คัดลอก requirements และติดตั้ง
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Copy app source code and models/samples folder
+# คัดลอกโปรเจกต์
 COPY . .
 
-# Expose Streamlit port
-EXPOSE 8501
-
-# Run the Streamlit app
-CMD ["streamlit", "run", "app3.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# รัน FastAPI ด้วย Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

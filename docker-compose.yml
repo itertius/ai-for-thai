@@ -1,12 +1,28 @@
-version: '3.8'
-
 services:
-  powerlifting-app:
+  pose-api:
     build: .
+    container_name: pose-api
     ports:
-      - "8501:8501"
+      - "3401:3401"
     volumes:
       - ./models:/app/models
-      - ./sample:/app/sample
     environment:
-      - PYTHONUNBUFFERED=1
+      - AIFORTHAI_API_KEY=dYLkTXTTzVgbo9ENEVbSTxib7d4qimfE
+      - OLLAMA_API_URL=http://ollama:11434
+      - OLLAMA_MODEL=qwen3:0.6b
+    restart: unless-stopped
+    networks:
+      - backend-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "3402:3402"
+    restart: unless-stopped
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
