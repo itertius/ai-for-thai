@@ -117,7 +117,7 @@ docker run -p 8000:8000 exercise-analysis
 4. Push branch (`git push origin feature/AmazingFeature`)
 5. Open a Merge Request
 
-## � Authors
+## 🖊️ Authors
 
 **Lead Developer**
 - **Witsanupong Kolakul** - [itertius](https://github.com/itertius) @ [iterrius_te](https://www.instagram.com/iterrius_te/)
@@ -132,7 +132,7 @@ docker run -p 8000:8000 exercise-analysis
   - Data Collection
   - Model Training
 
-## �📄 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
