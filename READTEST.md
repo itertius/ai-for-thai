@@ -50,10 +50,10 @@ curl -X POST "http://localhost:3401/predict-pose" \
 ## Step 4: ทดสอบเรียก API `/chat` (pose-api ที่ทำหน้าที่เรียก ollama)
 
 ```bash
-curl -X POST "http://localhost:3401/chat" \
-  -H "accept: application/json" \
-  -H "Content-Type: application/json" \
-  -d '{"prompt": "Hello, how are you?"}'
+  curl -X POST "http://localhost:3401/chat" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d '{"prompt": "Hello, how are you?"}'
 ```
 
 ถ้าคอนฟิกถูกต้อง จะได้ผลลัพธ์จาก ollama model ที่กำหนด (เช่น qwen3:0.6b)

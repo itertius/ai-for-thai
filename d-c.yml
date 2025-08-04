@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+
+  ai4thai-ollama:
+    image: ollama/ollama:latest
+    container_name: team24-ollama-engine
+    restart: unless-stopped
+    ports:
+      - "3402:3402"
+    volumes:
+      - example-root:/root
+    networks:
+      - ai4thai_net
+
+  ai4thai-pose-api:
+    build:
+      context: ./pose-api
+      dockerfile: Dockerfile
+    container_name: team24-pose-api
+    restart: unless-stopped
+    ports:
+      - "3401:3401"
+    volumes:
+      - ai4thai-models:/app/models
+    environment:
+      - AIFORTHAI_API_KEY=dYLkTXTTzVgbo9ENEVbSTxib7d4qimfE
+      - OLLAMA_API_URL=http://ai4thai-ollama:11434
+      - OLLAMA_MODEL=qwen3:0.6b
+    depends_on:
+      - ai4thai-ollama
+    networks:
+      - ai4thai_net
+
+networks:
+  ai4thai_net:
+    external: true
+
+volumes:
+  example-root:
+    external: true
+  example-data:
+    external: true
