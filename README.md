@@ -126,6 +126,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - AI for Thai for providing AI services
 - MediaPipe for pose detection
 - Open source community for their invaluable tools and libraries
-
----
-*Made with ❤️ for the Thai fitness community*
