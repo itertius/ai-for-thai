@@ -36,7 +36,6 @@ with open(model_path, "rb") as f:
 # --- Video Source Options ---
 st.subheader("🎥 Choose Video Source")
 use_sample = st.checkbox("Use sample video")
-enable_camera = st.checkbox("Enable camera")
 
 video_path = None
 
