@@ -7,7 +7,7 @@ services:
     volumes:
       - ./models:/app/models
     environment:
-      - AIFORTHAI_API_KEY=dYLkTXTTzVgbo9ENEVbSTxib7d4qimfE
+      - AIFORTHAI_API_KEY=AIFORTHAI_API_KEY
       - OLLAMA_API_URL=http://ollama:11434
       - OLLAMA_MODEL=qwen3:0.6b
     restart: unless-stopped
