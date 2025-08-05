@@ -3,7 +3,6 @@ import mediapipe as mp
 import numpy as np
 import pandas as pd
 import pickle
-import cv2
 import tempfile
 import os
 from dotenv import load_dotenv
@@ -54,8 +53,8 @@ if use_sample:
         st.error(f"Sample video not found at `{video_path}`")
         st.stop()
 
-elif enable_camera:
-    video_path = 0  # Webcam (OpenCV default)
+# elif enable_camera:
+#     video_path = 0  # Webcam (OpenCV default)
 
 else:
     uploaded_file = st.file_uploader("Upload a video", type=["mp4", "mov", "avi"])
