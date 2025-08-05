@@ -7,6 +7,7 @@ import tempfile
 import os
 from dotenv import load_dotenv
 import requests
+import cv2
 
 # --- Load environment variables ---
 load_dotenv()
@@ -36,6 +37,7 @@ with open(model_path, "rb") as f:
 # --- Video Source Options ---
 st.subheader("🎥 Choose Video Source")
 use_sample = st.checkbox("Use sample video")
+enable_camera = st.checkbox("Enable camera")
 
 video_path = None
 
